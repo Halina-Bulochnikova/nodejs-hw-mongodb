@@ -8,6 +8,7 @@
     "start": "node ./src/index.js",
     "dev": "nodemon src/index.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Halina-Bulochnikova/nodejs-hw-mongodb.git"
@@ -28,6 +29,10 @@
     "pino-pretty": "^13.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1",
     "pino-http": "^10.4.0"
   }
 }
