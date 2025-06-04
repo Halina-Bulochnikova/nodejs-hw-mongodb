@@ -13,7 +13,6 @@ const app = setupServer();
 
 const bootstrap = async () => {
   await initMongoConnection();
-  setupServer();
 };
 
 app.listen(PORT, () => {

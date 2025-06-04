@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
-
+import router from './routers/contacts.js';
 
 export const setupServer = () => {
   const app = express();
@@ -10,6 +10,7 @@ export const setupServer = () => {
   app.use(express.json());
   app.use(cors());
   app.use(pino({ transport: { target: 'pino-pretty' } }));
+  app.use('/contacts', router);
 
 
   app.get('/', (req, res) => {
