@@ -30,9 +30,9 @@ export const getContactByIdController = async (req, res, next) => {
       res.status(200).json({
         status: 200,
         message: "Successfully found contact with id {contactId}!",
-        data: {contact},
+        data: contact,
       });
     } catch (error) {
       next(error);
     }
-  };
+  }; 
