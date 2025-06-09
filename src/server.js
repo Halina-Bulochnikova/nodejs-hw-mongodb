@@ -3,6 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
 import router from './routers/contacts.js';
+import { getEnvVar } from './utils/getEnvVar.js';
+import { errorHandler } from './middlewares/errorHandler.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
+
+const PORT = Number(getEnvVar('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
@@ -17,17 +22,11 @@ export const setupServer = () => {
     res.json({ message: 'Hello world!' });
   });
 
+  app.use(notFoundHandler);
 
-  app.use((req, res) => {
-    res.status(404).json({ message: 'Not found' });
+  app.use(errorHandler);
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
-
-  app.use((err, req, res, next) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
-
-  return app;
 };
