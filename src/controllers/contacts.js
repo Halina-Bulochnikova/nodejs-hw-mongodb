@@ -1,7 +1,7 @@
 // src/controllers/contacts.js
 
 import createHttpError from 'http-errors';
-import { getAllContacts, getContactById } from "../services/contacts.js";
+import { createContact, getAllContacts, getContactById } from "../services/contacts.js";
 
 export const getAllContactsController = async (req, res, next) => {
     try {
@@ -33,4 +33,14 @@ export const getContactByIdController = async (req, res, next) => {
     } catch (error) {
       next(error);
     }
-  }; 
+}; 
+  
+export const createContactController = async (req, res) => {
+  const contact = await createContact(req.body);
+
+  res.status(200).json({
+    status: 200,
+    message: "Successfully patched a contact!",
+    data: contact,
+  });
+};
