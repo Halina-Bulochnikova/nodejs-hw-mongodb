@@ -16,6 +16,7 @@ export const setupServer = () => {
   app.use(cors());
   app.use(pino({ transport: { target: 'pino-pretty' } }));
   app.use('/contacts', router);
+  app.use('/contacts/:contactId', router);
 
 
   app.get('/', (req, res) => {
