@@ -33,8 +33,6 @@ export const patchContact = async (contactId, payload, options = {}) => {
 };
 
 export const deleteContact = async (contactId) => {
-  const rawResult = await ContactsCollection.findOneAndDelete({
-    _id: contactId,
-  });
-  return rawResult?.value || null;
+  const contact = await ContactsCollection.findOneAndDelete({_id: contactId});
+  return contact;
 };
