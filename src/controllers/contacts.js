@@ -9,7 +9,6 @@ import {
   patchContact
 } from "../services/contacts.js";
 
-import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
 export const getAllContactsController = async (req, res) => {
   const contacts = await getAllContacts();
