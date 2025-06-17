@@ -6,6 +6,7 @@ import router from './routers/contacts.js';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { contactSchema } from './validation/contacts.js';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 
@@ -22,6 +23,17 @@ export const setupServer = () => {
   app.get('/', (req, res) => {
     res.json({ message: 'Hello world!' });
   });
+  app.post(
+    '/students',
+    async (req, res, next) => {
+      try {
+        await contactSchema.validateAsync(req.body, { abortEarly: false });
+        //..
+      } catch (validationError) {
+        next(validationError);
+      }
+    },
+  );
 
   app.use(notFoundHandler);
 
