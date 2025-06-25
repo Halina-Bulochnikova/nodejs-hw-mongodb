@@ -2,7 +2,8 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
-import router from './routers/contacts.js';
+import router from './routers/index.js';
+import authRouter from './routers/auth.js';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -17,6 +18,7 @@ export const setupServer = () => {
   app.use(cors());
   app.use(pino({ transport: { target: 'pino-pretty' } }));
   app.use('/contacts', router);
+  app.use('/auth', authRouter);
   
 
 
