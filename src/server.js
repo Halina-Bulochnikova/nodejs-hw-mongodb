@@ -8,6 +8,7 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { contactSchema } from './validation/contacts.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 
@@ -16,6 +17,7 @@ export const setupServer = () => {
 
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
   app.use(pino({ transport: { target: 'pino-pretty' } }));
   app.use('/contacts', router);
   app.use('/auth', authRouter);
@@ -40,6 +42,7 @@ export const setupServer = () => {
   app.use(notFoundHandler);
 
   app.use(errorHandler);
+  
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
