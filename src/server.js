@@ -28,7 +28,7 @@ export const setupServer = () => {
     res.json({ message: 'Hello world!' });
   });
   app.post(
-    '/students',
+    '/contacts',
     async (req, res, next) => {
       try {
         await contactSchema.validateAsync(req.body, { abortEarly: false });
