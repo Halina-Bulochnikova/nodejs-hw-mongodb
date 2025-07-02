@@ -3,6 +3,8 @@
 import { logoutUser, refreshUsersSession, registerUser, requestResetToken } from '../services/auth.js';
 import { loginUser } from '../services/auth.js';
 import { ONE_DAY } from '../constants/index.js';
+import createHttpError from 'http-errors';
+import { getEnvVar } from '../utils/getEnvVar.js';
 
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
@@ -80,4 +82,33 @@ export const requestSendResetEmailController = async (req, res, next) => {
   } catch (error) {
     next(error);
   };
+};
+export const resetPasswordController = async (req, res) => {
+  const { token, password } = req.body;
+
+  let payload;
+  const JWT_SECRET = getEnvVar('JWT_SECRET');
+
+  try {
+    payload = jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    throw createHttpError(401, 'Token is expired or invalid.');
+  }
+
+  const { email } = payload;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    throw createHttpError(404, 'User not found!');
+  }
+
+  user.password = password;
+  user.sessionToken = null; 
+  await user.save();
+
+  res.status(200).json({
+    status: 200,
+    message: 'Password has been successfully reset.',
+    data: {},
+  });
 };
