@@ -16,6 +16,10 @@ import mongoose from 'mongoose';
      email: {
        type: String,
      },
+     photo: {
+      type: String,
+      default: null,
+    },
      contactType : {
        type: String,
        enum: ['work', 'home', 'personal'],

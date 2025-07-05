@@ -3,7 +3,7 @@
 import nodemailer from 'nodemailer';
 
 import { SMTP } from '../constants/index.js';
-import { getEnvVar } from '../utils/getEnvVar.js';
+import { getEnvVar } from './getEnvVar.js';
 
 const transporter = nodemailer.createTransport({
   host: getEnvVar(SMTP.SMTP_HOST),
@@ -15,6 +15,4 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendEmail = async (options) => {
-  return await transporter.sendMail(options);
-};
+export const sendEmail = (options) => transporter.sendMail(options);
