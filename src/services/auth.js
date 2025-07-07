@@ -95,7 +95,7 @@ export const requestResetToken = async (email) => {
 
   try {
     await sendEmail({
-      from: getEnvVar(SMTP.SMTP_FROM),
+      from: getEnvVar(SMTP.SMTP_USER),
       to: email,
       subject: 'Reset your password',
       html: `<p>Click <a href="${resetLink}">here</a> to reset your password!</p>`,

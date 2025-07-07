@@ -15,7 +15,6 @@ export const SMTP = {
     SMTP_PORT: 'SMTP_PORT',
     SMTP_USER: 'SMTP_USER',
     SMTP_PASSWORD: 'SMTP_PASSWORD',
-    SMTP_FROM: 'SMTP_FROM',
 };
   
 export const CLOUDINARY = {
