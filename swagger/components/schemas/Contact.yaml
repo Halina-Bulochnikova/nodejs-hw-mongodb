@@ -1,0 +1,20 @@
+#swagger/components/schemas/Contact.yaml
+type: object
+properties:
+  id:
+    type: string
+    example: "60d0fe4f5311236168a109ca"
+  name:
+    type: string
+    example: "John Doe"
+  email:
+    type: string
+    format: email
+    example: "john.doe@example.com"
+  phone:
+    type: string
+    example: "+380991234567"
+required:
+  - id
+  - name
+  - email

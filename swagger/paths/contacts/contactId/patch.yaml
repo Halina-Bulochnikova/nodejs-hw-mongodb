@@ -1,0 +1,29 @@
+#paths/contacts/contactId/patch.yaml
+
+tags:
+  - Contacts
+summary: Update a contact
+operationId: updateContact
+description: Updates an existing contact by ID.
+security:
+  - bearerAuth: []
+
+parameters:
+  - $ref: '../../../components/parameters/ContactId.yaml'
+
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../../components/schemas/Contact.yaml'
+
+responses:
+  '200':
+    description: Contact updated
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/Contact.yaml'
+  '404':
+    $ref: '../../../components/responses/NotFound.yaml'
