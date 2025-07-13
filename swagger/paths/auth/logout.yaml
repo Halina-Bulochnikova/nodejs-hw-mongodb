@@ -1,0 +1,14 @@
+#/swagger/paths/auth/logout.yaml
+
+tags:
+  - Auth
+summary: Logout user
+description: Logs out the user by clearing cookies and removing the session from the database
+operationId: logoutUser
+security:
+  - cookieAuth: []
+responses:
+  '204':
+    description: Successfully logged out
+  '401':
+    description: Session invalid or not found

@@ -1,0 +1,10 @@
+#swagger/components/responses/ValidationError.yaml
+
+description: Validation failed
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

@@ -1,0 +1,24 @@
+#/swagger/paths/auth/reset-pwd.yaml
+
+tags:
+  - Auth
+summary: Reset password
+description: Resets user password using a token from email
+operationId: resetPassword
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../components/schemas/auth.yaml#/ResetPasswordRequest'
+responses:
+  '200':
+    description: Password has been reset successfully
+  '400':
+    description: Invalid request body
+  '401':
+    description: Token expired or invalid
+  '404':
+    description: User not found

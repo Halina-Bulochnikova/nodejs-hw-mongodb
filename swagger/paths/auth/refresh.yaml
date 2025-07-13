@@ -1,0 +1,14 @@
+#/swagger/paths/auth/refresh.yaml
+
+tags:
+  - Auth
+summary: Refresh session
+description: Refreshes access token using cookies containing sessionId and refreshToken
+operationId: refreshUserSession
+security:
+  - cookieAuth: []
+responses:
+  '200':
+    description: Access token refreshed successfully
+  '401':
+    description: Invalid or expired session

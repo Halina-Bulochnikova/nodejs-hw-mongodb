@@ -1,0 +1,31 @@
+#/swagger/paths/auth/login.yaml
+tags:
+  - auth
+summary: User login
+operationId: loginUser
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../components/schemas/auth.yaml#/LoginUserRequest'
+responses:
+  '200':
+    description: User successfully logged in
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            accessToken:
+              type: string
+            refreshToken:
+              type: string
+  '400':
+    $ref: '../../components/responses/ValidationError.yaml'
+  '401':
+    description: Invalid email or password
+
+

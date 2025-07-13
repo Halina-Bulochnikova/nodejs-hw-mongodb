@@ -1,0 +1,20 @@
+#/swagger/paths/auth/register.yaml
+
+tags:
+  - Auth
+summary: Register a new user
+description: Creates a new user account in the system
+operationId: registerUser
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: '../../components/schemas/auth.yaml#/RegisterUserRequest'
+responses:
+  '201':
+    description: User registered successfully
+  '409':
+    description: Email already in use
+  '400':
+    description: Validation error

@@ -1,9 +1,24 @@
-#swagger/openapi.yaml
-
 openapi: 3.0.0
 info:
-  title: Contacts API
   version: 1.0.0
+  title: Contacts API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description:
+    This is a documentation of contacts app
+
+tags:
+  - name: auth
+    description: Authentication endpoints
+  - name: contacts
+    description: Contacts management
+ 
+servers:
+  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-a7nh.onrender.com
+
+      
 
 paths:
   /contacts:
@@ -12,16 +27,39 @@ paths:
     post:
       $ref: './paths/contacts/post.yaml'
 
-  /contacts/{contactId}:
+  /contacts/{id}:
     get:
-      $ref: './paths/contacts/contactId/get.yaml'
+      $ref: './paths/contacts/{id}/get.yaml'
     patch:
-      $ref: './paths/contacts/contactId/patch.yaml'
+      $ref: './paths/contacts/{id}/patch.yaml'
     delete:
-      $ref: './paths/contacts/contactId/delete.yaml'
+      $ref: './paths/contacts/{id}/delete.yaml'
+
+  /auth/register:
+    post:
+      $ref: './paths/auth/login.yaml'
+  /auth/login:
+    post:
+      $ref: './paths/auth/login.yaml'
+  /auth/logout:
+    post:
+      $ref: './paths/auth/logout.yaml'
+  /auth/refresh:
+    post:
+      $ref: './paths/auth/refresh.yaml'
+  /auth/send-reset-email:
+    post:
+      $ref: './paths/auth/send-reset-email.yaml'
+  /auth/reset-pwd:
+    post:
+      $ref: './paths/auth/reset-pwd.yaml'
 
 components:
   securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionId
     bearerAuth:
       type: http
       scheme: bearer

@@ -1,10 +1,8 @@
-#paths/contacts/get.yaml
-
 tags:
   - Contacts
 summary: Get all contacts
 operationId: getContacts
-description: Returns a list of contacts with optional pagination.
+description: Returns a list of contacts with optional pagination, sorting and filtering.
 security:
   - bearerAuth: []
 
@@ -17,6 +15,28 @@ responses:
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: '../../components/schemas/Contact.yaml'
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Contacts successfully found!
+            data:
+              type: array
+              items:
+                $ref: '../../components/schemas/Contact.yaml'
+  '401':
+    description: Unauthorized – Missing or invalid token
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: Unauthorized
