@@ -6,9 +6,10 @@ summary: Refresh session
 description: Refreshes access token using cookies containing sessionId and refreshToken
 operationId: refreshUserSession
 security:
-  - cookieAuth: []
+  - bearerAuth: []
 responses:
   '200':
     description: Access token refreshed successfully
   '401':
+    $ref: '../../components/responses/401.yaml'
     description: Invalid or expired session

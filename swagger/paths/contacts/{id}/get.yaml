@@ -1,5 +1,5 @@
 tags:
-  - Contacts
+  - contacts
 summary: Get a contact by ID
 operationId: getContactById
 description: Retrieves a contact by its unique ID.
@@ -7,11 +7,11 @@ security:
   - bearerAuth: []
 
 parameters:
-  - $ref: '../../../components/parameters/ContactId.yaml'
+ - $ref: '../../../components/parameters/ContactId.yaml'
 
 responses:
   '200':
-    description: Contact found
+    description: 'Contact found by id'
     content:
       application/json:
         schema:

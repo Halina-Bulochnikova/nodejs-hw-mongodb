@@ -1,42 +1,60 @@
 tags:
   - Contacts
 summary: Get all contacts
-operationId: getContacts
-description: Returns a list of contacts with optional pagination, sorting and filtering.
+operationId: getAllContacts
+description: Retrieves a paginated, sorted, and filtered list of contacts for the authorized user.
 security:
   - bearerAuth: []
 
 parameters:
-  - $ref: '../../components/parameters/Pagination.yaml'
+      - name: page
+        in: query
+        description: Page number for pagination
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: perPage
+        in: query
+        description: Number of items per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 10
+      - name: sortBy
+        in: query
+        description: Field to sort by (e.g. name, createdAt)
+        required: false
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        description: Sort order (asc or desc)
+        required: false
+        schema:
+          type: string
+          enum: [asc, desc]
+      - name: contactType
+        in: query
+        description: Filter by contactType
+        required: false
+        schema:
+          type: string
+          enum: [work, home, personal]
 
 responses:
-  '200':
-    description: A list of contacts
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Contacts successfully found!
-            data:
-              type: array
-              items:
-                $ref: '../../components/schemas/Contact.yaml'
-  '401':
-    description: Unauthorized – Missing or invalid token
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: integer
-              example: 401
-            message:
-              type: string
-              example: Unauthorized
+      '200':
+        description: List of contacts retrieved
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/Contact.yaml'
+      '401':
+        $ref: '../../components/responses/401.yaml'

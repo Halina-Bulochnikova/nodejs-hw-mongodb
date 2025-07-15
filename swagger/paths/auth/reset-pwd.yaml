@@ -17,8 +17,11 @@ responses:
   '200':
     description: Password has been reset successfully
   '400':
+    $ref: '../../components/responses/ValidationError.yaml'
     description: Invalid request body
   '401':
+    $ref: '../../components/responses/401.yaml'
     description: Token expired or invalid
   '404':
+    $ref: '../../components/responses/NotFound.yaml'
     description: User not found

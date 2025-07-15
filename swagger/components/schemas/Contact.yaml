@@ -3,18 +3,43 @@ type: object
 properties:
   id:
     type: string
-    example: "60d0fe4f5311236168a109ca"
+    example: "683f6356b8760461d20730b7"
+    readOnly: true
   name:
     type: string
-    example: "John Doe"
+    example: "Halina Bulochnikova"
+    description: Name of the contac
   email:
     type: string
     format: email
-    example: "john.doe@example.com"
-  phone:
+    example: "yatsynkagalina@gmail.com"
+    description: Email address of the contact (optional)
+  phoneNumber:
     type: string
     example: "+380991234567"
+    description: Phone number of the contact
+  contactType:
+    type: string
+    enum: [work, home, personal]
+    example: "home"
+    description: Type of contact category
+  isFavourite:
+    type: boolean
+    example: false
+    description: Indicates if contact is marked as favourite
+  parentId:
+    type: string
+    nullable: true
+    example: "60c72b2f5f1b2c001c8d1234"
+    description: Optional reference to parent contact (MongoDB ObjectId)
+  photo:
+    type: string
+    format: uri
+    nullable: true
+    example: "https://example.com/images/halina.jpg"
+    description: URL to contact's photo (optional)
 required:
   - id
   - name
-  - email
+  - phoneNumber
+  - contactType

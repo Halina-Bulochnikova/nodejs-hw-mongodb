@@ -17,4 +17,5 @@ responses:
   '409':
     description: Email already in use
   '400':
+    $ref: '../../components/responses/ValidationError.yaml'
     description: Validation error

@@ -6,9 +6,10 @@ summary: Logout user
 description: Logs out the user by clearing cookies and removing the session from the database
 operationId: logoutUser
 security:
-  - cookieAuth: []
+  - bearerAuth: []
 responses:
   '204':
     description: Successfully logged out
   '401':
+    $ref: '../../components/responses/401.yaml'
     description: Session invalid or not found

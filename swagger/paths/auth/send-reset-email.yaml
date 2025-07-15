@@ -17,6 +17,8 @@ responses:
   '200':
     description: Email sent successfully
   '404':
+    $ref: '../../components/responses/NotFound.yaml'
     description: User not found
   '400':
+    $ref: '../../components/responses/ValidationError.yaml'
     description: Validation error

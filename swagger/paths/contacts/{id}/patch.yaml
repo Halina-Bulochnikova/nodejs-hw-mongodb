@@ -1,7 +1,7 @@
 #paths/contacts/contactId/patch.yaml
 
 tags:
-  - Contacts
+  - сontacts
 summary: Update a contact
 operationId: updateContact
 description: Updates an existing contact by ID.

@@ -1,8 +1,9 @@
 #swagger/components/parameters/ContactId.yaml
 
-name: contactId
+name: id
 in: path
 required: true
 description: Unique ID of the contact
 schema:
   type: string
+  example: "683f6356b8760461d20730b7"

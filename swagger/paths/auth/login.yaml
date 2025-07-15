@@ -25,7 +25,9 @@ responses:
               type: string
   '400':
     $ref: '../../components/responses/ValidationError.yaml'
+    description: Invalid email or password
   '401':
+    $ref: '../../components/responses/401.yaml'
     description: Invalid email or password
 
 
