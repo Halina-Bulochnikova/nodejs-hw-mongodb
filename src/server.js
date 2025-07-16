@@ -23,12 +23,22 @@ export const setupServer = () => {
   app.use(cors());
   app.use(morgan('dev'));
   app.use(cookieParser());
-  app.use(pino({ transport: { target: 'pino-pretty' } }));
+
+  const isDev = process.env.NODE_ENV !== 'production';
+
+app.use(
+  pino(
+    isDev
+      ? { transport: { target: 'pino-pretty' } }
+      : {} 
+  )
+);
   app.use('/contacts', router);
   app.use('/auth', authRouter);
   app.use('/uploads', express.static(UPLOAD_DIR));
   
-app.use('/api-docs', swaggerDocs());
+  app.use('/api-docs', swaggerDocs());
+  
 
 
   app.get('/', (req, res) => {
