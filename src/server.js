@@ -1,6 +1,7 @@
 // src/server.js
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import pino from 'pino-http';
 import router from './routers/index.js';
 import authRouter from './routers/auth.js';
@@ -12,6 +13,7 @@ import cookieParser from 'cookie-parser';
 import { swaggerDocs } from './middlewares/swaggerDocs.js';
 import { UPLOAD_DIR } from './constants/index.js';
 
+
 const PORT = Number(getEnvVar('PORT', '3000'));
 
 export const setupServer = () => {
@@ -19,11 +21,14 @@ export const setupServer = () => {
 
   app.use(express.json());
   app.use(cors());
+  app.use(morgan('dev'));
   app.use(cookieParser());
   app.use(pino({ transport: { target: 'pino-pretty' } }));
   app.use('/contacts', router);
   app.use('/auth', authRouter);
+  app.use('/uploads', express.static(UPLOAD_DIR));
   
+app.use('/api-docs', swaggerDocs());
 
 
   app.get('/', (req, res) => {
@@ -45,8 +50,7 @@ export const setupServer = () => {
 
   app.use(errorHandler);
   
-app.use('/uploads', express.static(UPLOAD_DIR));
-  app.use('/api-docs', swaggerDocs());
+
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
