@@ -1,7 +1,7 @@
 #paths/contacts/contactId/delete.yaml
 
 tags:
-  - сontacts
+  - contacts
 summary: Delete a contact
 operationId: deleteContact
 description: Deletes a contact by its unique ID.

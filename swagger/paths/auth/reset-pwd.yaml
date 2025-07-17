@@ -25,3 +25,6 @@ responses:
   '404':
     $ref: '../../components/responses/NotFound.yaml'
     description: User not found
+  '500':
+    $ref: '../../components/responses/500.yaml'
+    description: Failed reset password

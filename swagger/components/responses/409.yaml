@@ -1,0 +1,21 @@
+#swagger/components/responses/409.yaml
+
+description: Conflict error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - status
+        - message
+        - data
+      properties:
+        status:
+          type: integer
+          example: 409
+        message:
+          type: string
+          example: Something went wrong
+        data:
+          type: string
+          example: Email in use

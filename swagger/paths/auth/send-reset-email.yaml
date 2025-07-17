@@ -19,6 +19,8 @@ responses:
   '404':
     $ref: '../../components/responses/NotFound.yaml'
     description: User not found
-  '400':
-    $ref: '../../components/responses/ValidationError.yaml'
-    description: Validation error
+  '500':
+    $ref: '../../components/responses/500.yaml'
+    description: Failed to send the email
+
+  

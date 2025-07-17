@@ -1,0 +1,17 @@
+#swagger/components/responses/200.yaml
+
+description: User successfully logged in
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - accessToken
+        - refreshToken
+      properties:
+        accessToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        refreshToken:
+          type: string
+          example: dGhpc0lzQVRlc3RSZWZyZXNoVG9rZW4=

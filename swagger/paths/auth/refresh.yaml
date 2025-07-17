@@ -10,6 +10,6 @@ security:
 responses:
   '200':
     description: Access token refreshed successfully
-  '401':
-    $ref: '../../components/responses/401.yaml'
-    description: Invalid or expired session
+  '404':
+    $ref: '../../components/responses/NotFound.yaml'
+    description: User not found

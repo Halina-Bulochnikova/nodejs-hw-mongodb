@@ -37,7 +37,7 @@ paths:
 
   /auth/register:
     post:
-      $ref: '../swagger/paths/auth/login.yaml'
+      $ref: '../swagger/paths/auth/register.yaml'
   /auth/login:
     post:
       $ref: '../swagger/paths/auth/login.yaml'
@@ -59,3 +59,6 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+  schemas:
+    Contact:
+      $ref: '../swagger/components/schemas/Contact.yaml'

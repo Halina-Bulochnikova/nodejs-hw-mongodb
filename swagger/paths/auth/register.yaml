@@ -1,10 +1,12 @@
-#/swagger/paths/auth/register.yaml
+# /swagger/paths/auth/register.yaml
 
 tags:
-  - Auth
+  - auth
 summary: Register a new user
 description: Creates a new user account in the system
 operationId: registerUser
+security:
+  - bearerAuth: []
 requestBody:
   required: true
   content:
@@ -13,9 +15,8 @@ requestBody:
         $ref: '../../components/schemas/auth.yaml#/RegisterUserRequest'
 responses:
   '201':
-    description: User registered successfully
+    $ref: '../../components/responses/201.yaml'
   '409':
-    description: Email already in use
+    $ref: '../../components/responses/409.yaml'
   '400':
     $ref: '../../components/responses/ValidationError.yaml'
-    description: Validation error

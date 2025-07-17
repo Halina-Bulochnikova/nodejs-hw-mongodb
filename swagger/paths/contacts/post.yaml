@@ -1,7 +1,7 @@
 #paths/contacts/post.yaml
 
 tags:
-  - Contacts
+  - contacts
 summary: Create a new contact
 operationId: createContact
 description: Adds a new contact to the database.
@@ -11,18 +11,47 @@ security:
 requestBody:
   required: true
   content:
-    application/json:
+    multipart/form-data:
       schema:
-        $ref: '../../components/schemas/Contact.yaml'
+        type: object
+        properties:
+          name:
+            type: string
+          email:
+            type: string
+            format: email
+          phoneNumber:
+            type: string
+          contactType:
+            type: string
+            enum: [work, home, personal]
+          isFavourite:
+            type: boolean
+          photo:
+            type: string
+            format: binary
+        required:
+          - name
+          - phoneNumber
+          - contactType
 
 responses:
-      '201':
-        description: Contact created successfully
-        content:
-          application/json:
-            schema:
+  '201':
+    description: Contact created successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: success
+            message:
+              type: string
+              example: Contact created successfully
+            data:
               $ref: '../../components/schemas/Contact.yaml'
-      '400':
-        $ref: ../../components/responses/ValidationError.yaml
-      '401':
-        $ref: ../../components/responses/401.yaml
+  '400':
+    $ref: '../../components/responses/ValidationError.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'

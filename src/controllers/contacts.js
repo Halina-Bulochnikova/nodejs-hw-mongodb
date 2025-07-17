@@ -1,3 +1,5 @@
+// src/controllers/contacts.js
+
 import createHttpError from 'http-errors';
 import {
   createContact,
@@ -15,7 +17,7 @@ export const getAllContactsController = async (req, res) => {
   const { sortBy, sortOrder } = parseSortParams(req.query);
   const filter = parseFilterParams(req.query);
 
-  const contacts = await getAllContacts({
+  const { contacts, total } = await getAllContacts({
     page,
     perPage,
     sortBy,
@@ -28,6 +30,11 @@ export const getAllContactsController = async (req, res) => {
     status: 200,
     message: 'Contacts successfully found!',
     data: contacts,
+    meta: {
+      total,
+      page,
+      perPage,
+    },
   });
 };
 
