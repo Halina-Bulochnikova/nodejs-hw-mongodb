@@ -12,7 +12,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas/auth.yaml#/ResetPasswordRequest'
+        $ref: '../../components/schemas/auth.yaml#ResetPasswordRequest'
 responses:
   '200':
     $ref: '../../components/responses/200.yaml'

@@ -31,7 +31,7 @@
     "/contacts": {
       "get": {
         "tags": [
-          "Contacts"
+          "contacts"
         ],
         "summary": "Get all contacts",
         "operationId": "getAllContacts",
@@ -127,7 +127,7 @@
       },
       "post": {
         "tags": [
-          "Contacts"
+          "contacts"
         ],
         "summary": "Create a new contact",
         "operationId": "createContact",
@@ -203,7 +203,7 @@
       },
       "patch": {
         "tags": [
-          "сontacts"
+          "contacts"
         ],
         "summary": "Update a contact",
         "operationId": "updateContact",
@@ -246,7 +246,7 @@
       },
       "delete": {
         "tags": [
-          "сontacts"
+          "contacts"
         ],
         "summary": "Delete a contact",
         "operationId": "deleteContact",
@@ -277,7 +277,7 @@
           "auth"
         ],
         "summary": "User login",
-        "operationId": "loginUser",
+        "operationId": "registerUser",
         "security": [
           {
             "bearerAuth": []
@@ -288,7 +288,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginUserRequest"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             }
           }
@@ -378,7 +378,7 @@
     "/auth/logout": {
       "post": {
         "tags": [
-          "Auth"
+          "auth"
         ],
         "summary": "Logout user",
         "description": "Logs out the user by clearing cookies and removing the session from the database",
@@ -402,7 +402,7 @@
     "/auth/refresh": {
       "post": {
         "tags": [
-          "Auth"
+          "auth"
         ],
         "summary": "Refresh session",
         "description": "Refreshes access token using cookies containing sessionId and refreshToken",
@@ -426,7 +426,7 @@
     "/auth/send-reset-email": {
       "post": {
         "tags": [
-          "Auth"
+          "auth"
         ],
         "summary": "Request password reset email",
         "description": "Sends password reset email to user with a reset token",
@@ -464,7 +464,7 @@
     "/auth/reset-pwd": {
       "post": {
         "tags": [
-          "Auth"
+          "auth"
         ],
         "summary": "Reset password",
         "description": "Resets user password using a token from email",
@@ -572,6 +572,7 @@
           "contactType"
         ]
       },
+      
       "LoginUserRequest": {
         "type": "object",
         "required": [
@@ -589,6 +590,26 @@
           }
         }
       },
+      "RegisterUserRequest": {
+        "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 30
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          }
+        }
+      },
+      
       "RequestResetEmail": {
         "type": "object",
         "required": [

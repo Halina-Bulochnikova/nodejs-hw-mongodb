@@ -1,3 +1,4 @@
+#swagger/path/contacts/get.yaml
 tags:
   - contacts
 summary: Get all contacts
@@ -46,33 +47,42 @@ parameters:
 
 responses:
   '200':
-    description: List of contacts retrieved successfully
+    description: List of contacts retrieved
     content:
       application/json:
         schema:
           type: object
           properties:
             status:
-              type: string
-              example: success
+              type: integer
+              example: 200
             message:
               type: string
-              example: Contacts retrieved successfully
+              example: Successfully found contacts!
             data:
-              type: array
-              items:
-                $ref: '../../components/schemas/Contact.yaml'
-            meta:
               type: object
               properties:
-                total:
-                  type: integer
-                  example: 125
+                data:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/Contact.yaml'
                 page:
                   type: integer
                   example: 2
                 perPage:
                   type: integer
-                  example: 10
+                  example: 4
+                totalItems:
+                  type: integer
+                  example: 6
+                totalPages:
+                  type: integer
+                  example: 2
+                hasPreviousPage:
+                  type: boolean
+                  example: true
+                hasNextPage:
+                  type: boolean
+                  example: false
   '401':
     $ref: '../../components/responses/401.yaml'

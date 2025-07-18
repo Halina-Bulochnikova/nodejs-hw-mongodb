@@ -62,3 +62,11 @@ components:
   schemas:
     Contact:
       $ref: '../swagger/components/schemas/Contact.yaml'
+    RegisterUserRequest:
+      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/RegisterUserRequest'
+    LoginUserRequest:
+      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/LoginUserRequest'
+    RequestResetEmail:
+      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/RequestResetEmail'
+    ResetPasswordRequest:
+      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/ResetPasswordRequest'

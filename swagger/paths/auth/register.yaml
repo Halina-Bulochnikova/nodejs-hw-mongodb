@@ -12,7 +12,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas/auth.yaml#/RegisterUserRequest'
+        $ref: '../../components/schemas/auth.yaml#RegisterUserRequest'
 responses:
   '201':
     $ref: '../../components/responses/201.yaml'

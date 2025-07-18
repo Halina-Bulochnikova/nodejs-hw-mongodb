@@ -10,7 +10,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas/auth.yaml#/LoginUserRequest'
+        $ref: '../../components/schemas/auth.yaml#LoginUserRequest'
 responses:
   '200':
     $ref: '../../components/responses/200.yaml'
