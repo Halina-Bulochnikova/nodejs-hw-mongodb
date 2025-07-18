@@ -13,18 +13,9 @@ requestBody:
         $ref: '../../components/schemas/auth.yaml#/LoginUserRequest'
 responses:
   '200':
-    description: User successfully logged in
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            accessToken:
-              type: string
-            refreshToken:
-              type: string
+    $ref: '../../components/responses/200.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
-    description: Invalid email or password
+    
 
 

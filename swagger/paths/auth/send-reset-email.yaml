@@ -1,7 +1,7 @@
 #/swagger/paths/auth/send-reset-email.yaml
 
 tags:
-  - Auth
+  - auth
 summary: Request password reset email
 description: Sends password reset email to user with a reset token
 operationId: requestPasswordResetEmail
@@ -15,12 +15,11 @@ requestBody:
         $ref: '../../components/schemas/auth.yaml#/RequestResetEmail'
 responses:
   '200':
-    description: Email sent successfully
+    $ref: '../../components/responses/200.yaml'
   '404':
     $ref: '../../components/responses/NotFound.yaml'
-    description: User not found
   '500':
     $ref: '../../components/responses/500.yaml'
-    description: Failed to send the email
+
 
   

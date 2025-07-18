@@ -11,10 +11,10 @@ parameters:
 
 responses:
   '200':
-    description: 'Contact found by id'
-    content:
-      application/json:
-        schema:
-          $ref: '../../../components/schemas/Contact.yaml'
+   description: Contact retrieved successfully
+   content:
+    application/json:
+      schema:
+        $ref: '../../../components/schemas/Contact.yaml'
   '404':
     $ref: '../../../components/responses/NotFound.yaml'

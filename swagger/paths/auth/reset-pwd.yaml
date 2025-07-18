@@ -1,7 +1,7 @@
 #/swagger/paths/auth/reset-pwd.yaml
 
 tags:
-  - Auth
+  - auth
 summary: Reset password
 description: Resets user password using a token from email
 operationId: resetPassword
@@ -15,16 +15,12 @@ requestBody:
         $ref: '../../components/schemas/auth.yaml#/ResetPasswordRequest'
 responses:
   '200':
-    description: Password has been reset successfully
+    $ref: '../../components/responses/200.yaml'
   '400':
     $ref: '../../components/responses/ValidationError.yaml'
-    description: Invalid request body
   '401':
     $ref: '../../components/responses/401.yaml'
-    description: Token expired or invalid
   '404':
     $ref: '../../components/responses/NotFound.yaml'
-    description: User not found
   '500':
     $ref: '../../components/responses/500.yaml'
-    description: Failed reset password
