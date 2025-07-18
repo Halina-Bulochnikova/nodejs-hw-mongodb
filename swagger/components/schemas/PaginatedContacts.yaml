@@ -1,0 +1,26 @@
+#swagger/components/schemas/PaginatedContacts.yaml
+
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: './Contact.yaml'
+  page:
+    type: integer
+    example: 2
+  perPage:
+    type: integer
+    example: 4
+  totalItems:
+    type: integer
+    example: 6
+  totalPages:
+    type: integer
+    example: 2
+  hasPreviousPage:
+    type: boolean
+    example: true
+  hasNextPage:
+    type: boolean
+    example: false

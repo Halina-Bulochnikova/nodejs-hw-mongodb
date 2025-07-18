@@ -62,6 +62,8 @@ components:
   schemas:
     Contact:
       $ref: '../swagger/components/schemas/Contact.yaml'
+    PaginatedContacts:
+      $ref: '../swagger/components/schemas/PaginatedContacts.yaml'
     RegisterUserRequest:
       $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/RegisterUserRequest'
     LoginUserRequest:
