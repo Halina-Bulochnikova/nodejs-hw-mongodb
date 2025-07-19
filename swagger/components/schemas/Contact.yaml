@@ -8,7 +8,7 @@ properties:
   name:
     type: string
     example: "Halina Bulochnikova"
-    description: Name of the contac
+    description: Name of the contact
   email:
     type: string
     format: email
@@ -16,7 +16,7 @@ properties:
     description: Email address of the contact (optional)
   phoneNumber:
     type: string
-    example: "+380991234567"
+    example: "+380991234400"
     description: Phone number of the contact
   contactType:
     type: string

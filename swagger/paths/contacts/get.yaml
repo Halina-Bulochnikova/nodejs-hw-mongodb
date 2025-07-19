@@ -46,20 +46,20 @@ parameters:
       enum: [work, home, personal]
 
 responses:
- '200':
-   description: List of contacts retrieved
-   content:
-       application/json:
-         schema:
-           type: object
-           properties:
-             status:
-               type: integer
-               example: 200
-             message:
-               type: string
-               example: Successfully found contacts!
-             data:
-               $ref: '../../../components/schemas/PaginatedContacts.yaml'
+  '200':
+    description: List of contacts retrieved
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found contacts!
+            data:
+              $ref: '../../components/schemas/PaginatedContacts.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'

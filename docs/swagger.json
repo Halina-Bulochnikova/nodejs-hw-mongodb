@@ -107,15 +107,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Contact"
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/PaginatedContacts"
                 }
               }
             }
@@ -523,7 +515,7 @@
           "name": {
             "type": "string",
             "example": "Halina Bulochnikova",
-            "description": "Name of the contac"
+            "description": "Name of the contact"
           },
           "email": {
             "type": "string",
@@ -572,7 +564,64 @@
           "contactType"
         ]
       },
-      
+      "PaginatedContacts": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Successfully found contacts!"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              },
+              "page": {
+                "type": "integer",
+                "example": 2
+              },
+              "perPage": {
+                "type": "integer",
+                "example": 4
+              },
+              "totalItems": {
+                "type": "integer",
+                "example": 6
+              },
+              "totalPages": {
+                "type": "integer",
+                "example": 2
+              },
+              "hasPreviousPage": {
+                "type": "boolean",
+                "example": true
+              },
+              "hasNextPage": {
+                "type": "boolean",
+                "example": false
+              }
+            },
+            "required": [
+              "data",
+              "page",
+              "perPage",
+              "totalItems",
+              "totalPages",
+              "hasPreviousPage",
+              "hasNextPage"
+            ]
+          }
+        },
+        "required": ["status", "message", "data"]
+      },
       "LoginUserRequest": {
         "type": "object",
         "required": [

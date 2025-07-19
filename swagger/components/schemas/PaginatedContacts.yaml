@@ -24,3 +24,12 @@ properties:
   hasNextPage:
     type: boolean
     example: false
+required:
+  - data
+  - page
+  - perPage
+  - totalItems
+  - totalPages
+  - hasPreviousPage
+  - hasNextPage
+
