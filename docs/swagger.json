@@ -464,7 +464,7 @@
                             "type": "string",
                             "example": "\"name\" is required"
                           }
-                        },
+                        }
                       }
                     }
                   }
