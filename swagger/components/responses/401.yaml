@@ -15,12 +15,7 @@ content:
           example: 401
         message:
           type: string
-          example: UnauthorizedError
+          example: Something went wrong
         data:
-          type: object
-          required:
-            - message
-          properties:
-            message:
-              type: string
-              example: 'Access token expired'
+          type: string
+          example: User not found
