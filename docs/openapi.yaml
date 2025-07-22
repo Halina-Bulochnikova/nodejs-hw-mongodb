@@ -65,10 +65,10 @@ components:
     PaginatedContacts:
       $ref: '../swagger/components/schemas/PaginatedContacts.yaml'
     RegisterUserRequest:
-      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/RegisterUserRequest'
+      $ref: '../swagger/components/schemas/RegisterUserRequest.yaml'
     LoginUserRequest:
-      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/LoginUserRequest'
+      $ref: '../swagger/components/schemas/LoginUserRequest.yaml'
     RequestResetEmail:
-      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/RequestResetEmail'
+      $ref: '../swagger/components/schemas/RequestResetEmail.yaml'
     ResetPasswordRequest:
-      $ref: '../swagger/components/schemas/auth.yaml#/components/schemas/ResetPasswordRequest'
+      $ref: '../swagger/components/schemas/ResetPasswordRequest.yaml'

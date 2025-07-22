@@ -8,8 +8,9 @@ operationId: refreshUserSession
 security:
   - bearerAuth: []
 responses:
-  '200':
-    $ref: '../../components/responses/200.yaml'
+  '200': {
+    "description": "Access token refreshed successfully"
+  }
   '404':
     $ref: '../../components/responses/NotFound.yaml'
   

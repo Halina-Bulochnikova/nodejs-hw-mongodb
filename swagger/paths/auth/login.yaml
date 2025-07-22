@@ -10,12 +10,33 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas/auth.yaml#LoginUserRequest'
+        $ref: '../../components/schemas/LoginUserRequest.yaml'
+
 responses:
   '200':
-    $ref: '../../components/responses/200.yaml'
+    description: User successfully logged in
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in a user!
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  example: ecA0zYNUdhFRGJGrpV/x
   '401':
     $ref: '../../components/responses/401.yaml'
-    
-
-

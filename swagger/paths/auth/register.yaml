@@ -7,16 +7,65 @@ description: Creates a new user account in the system
 operationId: registerUser
 security:
   - bearerAuth: []
+
 requestBody:
   required: true
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas/auth.yaml#RegisterUserRequest'
+        $ref: '../../components/schemas/RegisterUserRequest.yaml'
+
 responses:
   '201':
-    $ref: '../../components/responses/201.yaml'
+    description: Successfully registered a user!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered a user!
+            data:
+              type: object
+              required:
+                - _id
+                - name
+                - email
+                - role
+                - createdAt
+                - updatedAt
+              properties:
+                _id:
+                  type: string
+                  example: "687eafebeadc1f0e95007887"
+                name:
+                  type: string
+                  example: "Igor Tuss"
+                email:
+                  type: string
+                  example: "igora@example.com"
+                role:
+                  type: string
+                  example: "parent"
+                createdAt:
+                  type: string
+                  format: date-time
+                  example: "2025-07-21T21:23:55.733Z"
+                updatedAt:
+                  type: string
+                  format: date-time
+                  example: "2025-07-21T21:23:55.733Z"
+
   '409':
     $ref: '../../components/responses/409.yaml'
+
   '400':
     $ref: '../../components/responses/ValidationError.yaml'

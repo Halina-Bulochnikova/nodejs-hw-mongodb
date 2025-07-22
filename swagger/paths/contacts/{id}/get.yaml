@@ -7,14 +7,27 @@ security:
   - bearerAuth: []
 
 parameters:
- - $ref: '../../../components/parameters/ContactId.yaml'
+  - $ref: '../../../components/parameters/ContactId.yaml'
 
 responses:
   '200':
-   description: Contact retrieved successfully
-   content:
-    application/json:
-      schema:
-        $ref: '../../../components/schemas/Contact.yaml'
+    description: Contact found by id
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully retrieved contact!
+            data:
+              $ref: '../../../components/schemas/Contact.yaml'
   '404':
     $ref: '../../../components/responses/NotFound.yaml'

@@ -1,5 +1,4 @@
 #paths/contacts/post.yaml
-
 tags:
   - contacts
 summary: Create a new contact
@@ -44,13 +43,14 @@ responses:
           type: object
           properties:
             status:
-              type: string
-              example: success
+              type: integer
+              example: 201
             message:
               type: string
-              example: Contact created successfully
+              example: Contact created
             data:
               $ref: '../../components/schemas/Contact.yaml'
+
   '400':
     $ref: '../../components/responses/ValidationError.yaml'
   '401':
